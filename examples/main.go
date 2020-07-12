@@ -6,7 +6,7 @@ import (
 	"html/template"
 	"os"
 
-	"github.com/go-echarts/go-echarts/charts"
+	"github.com/lioneagle/echarts/charts/option"
 )
 
 type A struct {
@@ -46,7 +46,7 @@ func main() {
 	bookByte, _ := json.Marshal(book)
 	fmt.Printf("%s\n", string(bookByte))
 
-	titleOpts := &charts.TitleOpts{Title: "abc"}
+	titleOpts := &option.TitleOpts{Title: "abc"}
 	buf, _ := json.Marshal(titleOpts)
 	fmt.Printf("%s\n", string(buf))
 }

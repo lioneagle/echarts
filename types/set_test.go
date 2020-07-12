@@ -43,12 +43,12 @@ func TestSetStringForeach(t *testing.T) {
 	set.Add(items...)
 
 	count := 0
-	checkFunc1 := func(index int, item string) (stop bool, err error) {
+	checkFunc1 := func(index int, item *string) (stop bool, err error) {
 		count++
 		return false, nil
 	}
 
-	checkFunc2 := func(index int, item string) (stop bool, err error) {
+	checkFunc2 := func(index int, item *string) (stop bool, err error) {
 		count++
 		if index >= 1 {
 			return true, nil
@@ -56,11 +56,17 @@ func TestSetStringForeach(t *testing.T) {
 		return false, nil
 	}
 
-	checkFunc3 := func(index int, item string) (stop bool, err error) {
+	checkFunc3 := func(index int, item *string) (stop bool, err error) {
 		count++
 		if index >= 2 {
 			return false, errors.Errorf("test err")
 		}
+		return false, nil
+	}
+
+	checkFunc4 := func(index int, item *string) (stop bool, err error) {
+		count++
+		*item = "host/" + *item
 		return false, nil
 	}
 
@@ -82,6 +88,12 @@ func TestSetStringForeach(t *testing.T) {
 	err = set.Foreach(checkFunc3)
 	test.EXPECT_TRUE(t, err != nil, "")
 	test.EXPECT_EQ(t, count, 3, "")
+
+	count = 0
+	err = set.Foreach(checkFunc4)
+	test.EXPECT_TRUE(t, err == nil, "")
+	test.EXPECT_EQ(t, count, 3, "")
+	test.EXPECT_EQ(t, set.data, []string{"host/a", "host/b", "host/c"}, "")
 }
 
 func TestSetStringSort(t *testing.T) {

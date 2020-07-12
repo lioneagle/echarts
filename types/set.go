@@ -37,13 +37,13 @@ func (this *SetString) Find(item string) bool {
 	return false
 }
 
-func (this *SetString) Foreach(f func(index int, item string) (stop bool, err error)) error {
+func (this *SetString) Foreach(f func(index int, item *string) (stop bool, err error)) error {
 	if f == nil {
 		return errors.Errorf("f is nil")
 	}
 
-	for i, v := range this.data {
-		stop, err := f(i, v)
+	for i := 0; i < len(this.data); i++ {
+		stop, err := f(i, &this.data[i])
 		if err != nil {
 			return err
 		}

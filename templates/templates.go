@@ -30,9 +30,8 @@ func init() {
 	}
 }
 
-func GetTemplate(name string) (string, bool) {
-	ret, ok := tplmap[name]
-	return ret, ok
+func GetTemplate(name string) string {
+	return tplmap[name]
 }
 
 func LoadTemplates(loader http.FileSystem) error {

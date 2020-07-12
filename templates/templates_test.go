@@ -17,9 +17,8 @@ func TestInitTemplatesOk(t *testing.T) {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			t.Parallel()
 
-			tpl, ok := GetTemplate(v)
+			tpl := GetTemplate(v)
 
-			test.EXPECT_TRUE(t, ok, "")
 			test.EXPECT_TRUE(t, len(tpl) > 0, "tpl \"%s\" is empty", v)
 		})
 	}
@@ -35,9 +34,9 @@ func TestGetTemplatesNOk(t *testing.T) {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			t.Parallel()
 
-			_, ok := GetTemplate(v)
+			tpl := GetTemplate(v)
 
-			test.EXPECT_FALSE(t, ok, "")
+			test.EXPECT_EQ(t, tpl, "", "")
 		})
 	}
 }
@@ -54,9 +53,8 @@ func TestLoadTemplatesOk(t *testing.T) {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			t.Parallel()
 
-			tpl, ok := GetTemplate(v)
+			tpl := GetTemplate(v)
 
-			test.EXPECT_TRUE(t, ok, "")
 			test.EXPECT_TRUE(t, len(tpl) > 0, "tpl \"%s\" is empty", v)
 		})
 	}

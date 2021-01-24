@@ -1,0 +1,21 @@
+# github.com/gobuffalo/envy v1.7.0
+github.com/gobuffalo/envy
+# github.com/gobuffalo/packd v0.3.0
+github.com/gobuffalo/packd
+github.com/gobuffalo/packd/internal/takeon/github.com/markbates/errx
+# github.com/gobuffalo/packr v1.30.1
+github.com/gobuffalo/packr
+# github.com/joho/godotenv v1.3.0
+github.com/joho/godotenv
+# github.com/lioneagle/goutil v0.1.1
+github.com/lioneagle/goutil/src/buffer
+github.com/lioneagle/goutil/src/logger
+github.com/lioneagle/goutil/src/chars
+github.com/lioneagle/goutil/src/test
+github.com/lioneagle/goutil/src/mathex
+# github.com/pkg/errors v0.9.1
+github.com/pkg/errors
+# github.com/rogpeppe/go-internal v1.3.0
+github.com/rogpeppe/go-internal/modfile
+github.com/rogpeppe/go-internal/module
+github.com/rogpeppe/go-internal/semver

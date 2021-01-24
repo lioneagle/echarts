@@ -10,7 +10,7 @@ import (
 	"github.com/lioneagle/goutil/src/test"
 )
 
-func TestSetStringAdd(t *testing.T) {
+func TestStringSetAdd(t *testing.T) {
 	testdata := []struct {
 		items  []string
 		wanted []string
@@ -27,7 +27,8 @@ func TestSetStringAdd(t *testing.T) {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			t.Parallel()
 
-			set := NewSetString()
+			//set := NewStringSet()
+			set := &StringSet{}
 			set.Add(v.items...)
 
 			test.EXPECT_EQ(t, set.Len(), len(v.wanted), "")
@@ -36,10 +37,10 @@ func TestSetStringAdd(t *testing.T) {
 	}
 }
 
-func TestSetStringForeach(t *testing.T) {
+func TestStringSetForeach(t *testing.T) {
 	items := []string{"a", "b", "c"}
 
-	set := NewSetString()
+	set := NewStringSet()
 	set.Add(items...)
 
 	count := 0
@@ -96,7 +97,7 @@ func TestSetStringForeach(t *testing.T) {
 	test.EXPECT_EQ(t, set.data, []string{"host/a", "host/b", "host/c"}, "")
 }
 
-func TestSetStringSort(t *testing.T) {
+func TestStringSetSort(t *testing.T) {
 	testdata := []struct {
 		items  []string
 		wanted []string
@@ -112,7 +113,7 @@ func TestSetStringSort(t *testing.T) {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
 			t.Parallel()
 
-			set := NewSetString()
+			set := NewStringSet()
 			set.Add(v.items...)
 			set.Sort()
 

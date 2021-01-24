@@ -6,21 +6,21 @@ import (
 	"github.com/pkg/errors"
 )
 
-type SetString struct {
+type StringSet struct {
 	data []string
 }
 
-func NewSetString() *SetString {
-	return &SetString{
+func NewStringSet() *StringSet {
+	return &StringSet{
 		data: make([]string, 0),
 	}
 }
 
-func (this *SetString) Len() int {
+func (this *StringSet) Len() int {
 	return len(this.data)
 }
 
-func (this *SetString) Add(items ...string) {
+func (this *StringSet) Add(items ...string) {
 	for _, v := range items {
 		if !this.Find(v) {
 			this.data = append(this.data, v)
@@ -28,7 +28,7 @@ func (this *SetString) Add(items ...string) {
 	}
 }
 
-func (this *SetString) Find(item string) bool {
+func (this *StringSet) Find(item string) bool {
 	for _, v := range this.data {
 		if item == v {
 			return true
@@ -37,9 +37,9 @@ func (this *SetString) Find(item string) bool {
 	return false
 }
 
-func (this *SetString) Foreach(f func(index int, item *string) (stop bool, err error)) error {
+func (this *StringSet) Foreach(f func(index int, item *string) (stop bool, err error)) error {
 	if f == nil {
-		return errors.Errorf("f is nil")
+		return errors.Errorf("func f is nil")
 	}
 
 	for i := 0; i < len(this.data); i++ {
@@ -54,7 +54,7 @@ func (this *SetString) Foreach(f func(index int, item *string) (stop bool, err e
 	return nil
 }
 
-func (this *SetString) Sort() {
+func (this *StringSet) Sort() {
 	sort.Slice(this.data, func(i, j int) bool {
 		if len(this.data[i]) < len(this.data[j]) {
 			return true

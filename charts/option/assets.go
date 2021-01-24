@@ -5,6 +5,13 @@ import (
 )
 
 type AssetsOpts struct {
-	JSAssets  types.SetString
-	CSSAssets types.SetString
+	JSAssets  *types.StringSet
+	CSSAssets *types.StringSet
+}
+
+func NewAssetsOpts() *AssetsOpts {
+	return &AssetsOpts{
+		JSAssets:  types.NewStringSet(),
+		CSSAssets: types.NewStringSet(),
+	}
 }

@@ -36,4 +36,8 @@ type TitleOpts struct {
 	Right string `json:"right,omitempty"`
 }
 
-func (TitleOpts) MarkGlobal() {}
+func (*TitleOpts) MarkGlobal() {}
+
+func NewTitleOpts() *TitleOpts {
+	return &TitleOpts{}
+}
